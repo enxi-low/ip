@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class Luna {
     public static void main(String[] args) {
+        UserList list = new UserList();
+
         printSeparator();
         System.out.println("Hello! I'm Luna.");
         System.out.println("What can I do for you?");
@@ -16,7 +18,7 @@ public class Luna {
                 printSeparator();
                 break;
             } else {
-                System.out.println(command);
+                list.add(command);
                 printSeparator();
             }
         }
