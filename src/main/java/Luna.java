@@ -10,17 +10,19 @@ public class Luna {
         printSeparator();
 
         Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNextLine()) {
-            String command = scanner.nextLine();
+        while (scanner.hasNext()) {
+            String command = scanner.next();
             printSeparator();
             if (command.equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!");
                 printSeparator();
                 break;
+            } else if (command.equals("list")) {
+                list.print();
             } else {
                 list.add(command);
-                printSeparator();
             }
+            printSeparator();
         }
         scanner.close();
     }
