@@ -1,5 +1,6 @@
 public class Task {
     private final String name;
+    private boolean isDone;
 
     public Task(String name) {
         this.name = name;
@@ -7,6 +8,17 @@ public class Task {
 
     @Override
     public String toString() {
-        return name;
+        if (isDone) {
+            return "[X] " + name;
+        } else {
+            return "[ ] " + name;
+        }
+    }
+
+    public void markAsDone() {
+        isDone = true;
+
+        System.out.println("Nice! I've marked this task as done:");
+        System.out.println("  " + this);
     }
 }

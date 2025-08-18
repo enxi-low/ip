@@ -6,8 +6,12 @@ public class TaskList {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-        for (int i = 0; i < tasks.size(); i++) {
+        int taskCount = tasks.size();
+        for (int i = 0; i < taskCount; i++) {
             string.append(i + 1).append(". ").append(tasks.get(i));
+            if (i != taskCount - 1) {
+                string.append("\n");
+            }
         }
         return string.toString();
     }
@@ -15,5 +19,9 @@ public class TaskList {
     public void add(Task task) {
         tasks.add(task);
         System.out.println("added: " + task);
+    }
+
+    public void markAsDone(int taskNumber) {
+        tasks.get(taskNumber - 1).markAsDone();
     }
 }

@@ -10,8 +10,8 @@ public class Luna {
         printSeparator();
 
         Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNext()) {
-            String command = scanner.next();
+        while (scanner.hasNextLine()) {
+            String command = scanner.nextLine();
             printSeparator();
             if (command.equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!");
@@ -19,6 +19,8 @@ public class Luna {
                 break;
             } else if (command.equals("list")) {
                 System.out.println(list);
+            } else if (command.startsWith("mark ")) {
+                list.markAsDone(Integer.parseInt(command.substring(5)));
             } else {
                 list.add(new Task(command));
             }
