@@ -21,6 +21,8 @@ public class Luna {
                 System.out.println(list);
             } else if (command.startsWith("mark ")) {
                 list.markAsDone(Integer.parseInt(command.substring(5)));
+            } else if (command.startsWith("unmark ")) {
+                list.unmarkAsDone(Integer.parseInt(command.substring(7)));
             } else {
                 list.add(new Task(command));
             }

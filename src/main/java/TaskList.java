@@ -24,4 +24,8 @@ public class TaskList {
     public void markAsDone(int taskNumber) {
         tasks.get(taskNumber - 1).markAsDone();
     }
+
+    public void unmarkAsDone(int taskNumber) {
+        tasks.get(taskNumber - 1).unmarkAsDone();
+    }
 }
