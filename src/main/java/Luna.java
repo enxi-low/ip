@@ -11,8 +11,14 @@ public class Luna {
         while (scanner.hasNextLine()) {
             String command = scanner.nextLine();
             printSeparator();
-            System.out.println(command);
-            printSeparator();
+            if (command.equals("bye")) {
+                System.out.println("Bye. Hope to see you again soon!");
+                printSeparator();
+                break;
+            } else {
+                System.out.println(command);
+                printSeparator();
+            }
         }
         scanner.close();
     }
