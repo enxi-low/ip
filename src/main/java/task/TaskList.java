@@ -20,7 +20,9 @@ public class TaskList {
 
     public void add(Task task) {
         tasks.add(task);
+        System.out.println("Got it. I've added this task:");
         System.out.println("added: " + task);
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
 
     public void markAsDone(int taskNumber) {

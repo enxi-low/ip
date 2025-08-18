@@ -2,6 +2,7 @@ package luna;
 
 import task.Task;
 import task.TaskList;
+import task.ToDo;
 
 import java.util.Scanner;
 
@@ -28,6 +29,8 @@ public class Luna {
                 list.markAsDone(Integer.parseInt(command.substring(5)));
             } else if (command.startsWith("unmark ")) {
                 list.unmarkAsDone(Integer.parseInt(command.substring(7)));
+            } else if (command.startsWith("todo ")) {
+                list.add(new ToDo(command.substring(5)));
             } else {
                 list.add(new Task(command));
             }
