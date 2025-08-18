@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Luna {
     public static void main(String[] args) {
-        UserList list = new UserList();
+        TaskList list = new TaskList();
 
         printSeparator();
         System.out.println("Hello! I'm Luna.");
@@ -18,9 +18,9 @@ public class Luna {
                 printSeparator();
                 break;
             } else if (command.equals("list")) {
-                list.print();
+                System.out.println(list);
             } else {
-                list.add(command);
+                list.add(new Task(command));
             }
             printSeparator();
         }
