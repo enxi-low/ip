@@ -1,10 +1,15 @@
 package task;
 
-public class Task {
+import exception.LunaException;
+
+public abstract class Task {
     private final String name;
     private boolean isDone;
 
-    public Task(String name) {
+    public Task(String name) throws LunaException {
+        if (name.isEmpty()) {
+            throw new LunaException("The description of a " + taskType() + " cannot be empty");
+        }
         this.name = name;
     }
 
@@ -16,6 +21,8 @@ public class Task {
             return "[ ] " + name;
         }
     }
+
+    public abstract String taskType();
 
     public void markAsDone() {
         isDone = true;
