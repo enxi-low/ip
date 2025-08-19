@@ -1,5 +1,6 @@
 package luna;
 
+import task.Deadline;
 import task.Task;
 import task.TaskList;
 import task.ToDo;
@@ -25,12 +26,15 @@ public class Luna {
                 break;
             } else if (command.equals("list")) {
                 System.out.println(list);
-            } else if (command.startsWith("mark ")) {
+            } else if (command.startsWith("mark")) {
                 list.markAsDone(Integer.parseInt(command.substring(5)));
-            } else if (command.startsWith("unmark ")) {
+            } else if (command.startsWith("unmark")) {
                 list.unmarkAsDone(Integer.parseInt(command.substring(7)));
-            } else if (command.startsWith("todo ")) {
+            } else if (command.startsWith("todo")) {
                 list.add(new ToDo(command.substring(5)));
+            } else if (command.startsWith("deadline")) {
+                String[] nameAndDeadline = command.substring(9).split(" /by ");
+                list.add(new Deadline(nameAndDeadline[0], nameAndDeadline[1]));
             } else {
                 list.add(new Task(command));
             }
@@ -39,7 +43,7 @@ public class Luna {
         scanner.close();
     }
 
-    public static void printSeparator() {
+    private static void printSeparator() {
         System.out.println("-------------------------------------");
     }
 }
