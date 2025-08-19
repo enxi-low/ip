@@ -1,5 +1,3 @@
-package luna;
-
 import task.*;
 
 import java.util.Scanner;
