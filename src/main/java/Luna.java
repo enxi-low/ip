@@ -27,6 +27,8 @@ public class Luna {
                     list.markAsDone(Integer.parseInt(command.substring(5)));
                 } else if (command.startsWith("unmark")) {
                     list.unmarkAsDone(Integer.parseInt(command.substring(7)));
+                } else if (command.startsWith("delete")) {
+                    list.delete(Integer.parseInt(command.substring(7)));
                 } else if (command.startsWith("todo")) {
                     list.add(new ToDo(command.substring(5)));
                 } else if (command.startsWith("deadline")) {
