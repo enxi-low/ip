@@ -1,9 +1,6 @@
 package luna;
 
-import task.Deadline;
-import task.Task;
-import task.TaskList;
-import task.ToDo;
+import task.*;
 
 import java.util.Scanner;
 
@@ -35,6 +32,10 @@ public class Luna {
             } else if (command.startsWith("deadline")) {
                 String[] nameAndDeadline = command.substring(9).split(" /by ");
                 list.add(new Deadline(nameAndDeadline[0], nameAndDeadline[1]));
+            } else if (command.startsWith("event")) {
+                String[] nameAndRest = command.substring(6).split(" /from ");
+                String[] fromAndTo = nameAndRest[1].split(" /to ");
+                list.add(new Event(nameAndRest[0], fromAndTo[0], fromAndTo[1]));
             } else {
                 list.add(new Task(command));
             }
