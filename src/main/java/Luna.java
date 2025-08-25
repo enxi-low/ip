@@ -4,11 +4,11 @@ import task.Deadline;
 import task.Event;
 import task.TaskList;
 import task.ToDo;
+import ui.Parser;
 import ui.Ui;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Luna {
@@ -28,46 +28,48 @@ public class Luna {
         while (scanner.hasNextLine()) {
             String command = scanner.nextLine();
             try {
-                if (command.equals("bye")) {
+                Object[] arguments = Parser.parse(command);
+                if (arguments[0].equals("bye")) {
                     ui.showFarewell();
                     break;
-                } else if (command.equals("list")) {
+                }
+
+                switch ((String) arguments[0]) {
+                case "list":
                     ui.show(list);
-                } else if (command.startsWith("mark")) {
-                    ui.show(list.markAsDone(Integer.parseInt(command.substring(5))));
+                    break;
+                case "mark":
+                    ui.show(list.markAsDone((int) arguments[1]));
                     storage.save(list);
-                } else if (command.startsWith("unmark")) {
-                    ui.show(list.unmarkAsDone(Integer.parseInt(command.substring(7))));
+                    break;
+                case "unmark":
+                    ui.show(list.unmarkAsDone((int) arguments[1]));
                     storage.save(list);
-                } else if (command.startsWith("delete")) {
-                    ui.show(list.delete(Integer.parseInt(command.substring(7))));
+                    break;
+                case "delete":
+                    ui.show(list.delete((int) arguments[1]));
                     storage.save(list);
-                } else if (command.startsWith("todo")) {
-                    ui.show(list.add(new ToDo(command.substring(5))));
+                    break;
+                case "todo":
+                    ui.show(list.add(new ToDo((String) arguments[1])));
                     storage.save(list);
-                } else if (command.startsWith("deadline")) {
-                    String[] nameAndDeadline = command.substring(9).split(" /by ");
-                    ui.show(list.add(new Deadline(nameAndDeadline[0], LocalDate.parse(nameAndDeadline[1]))));
+                    break;
+                case "deadline":
+                    ui.show(list.add(new Deadline((String) arguments[1], (LocalDate) arguments[2])));
                     storage.save(list);
-                } else if (command.startsWith("event")) {
-                    String[] nameAndRest = command.substring(6).split(" /from ");
-                    String[] fromAndTo = nameAndRest[1].split(" /to ");
-                    ui.show(list.add(new Event(nameAndRest[0], LocalDate.parse(fromAndTo[0]),
-                            LocalDate.parse(fromAndTo[1]))));
+                    break;
+                case "event":
+                    ui.show(list.add(
+                            new Event((String) arguments[1], (LocalDate) arguments[2], (LocalDate) arguments[3])));
                     storage.save(list);
-                } else {
-                    ui.showError("I'm sorry, but I don't know what that means :-(");
+                    break;
+                default:
+                    throw new LunaException("I'm sorry, but I don't know what that means :-(");
                 }
             } catch (LunaException e) {
                 ui.showError(e);
-            } catch (NumberFormatException e) {
-                ui.showError("The argument needs to be an integer");
-            } catch (StringIndexOutOfBoundsException | ArrayIndexOutOfBoundsException e) {
-                ui.showError("Missing arguments.");
             } catch (IOException e) {
                 ui.showError("Saving failed.");
-            } catch (DateTimeParseException e) {
-                ui.showError("Please provide a valid date in yyyy-mm-dd format.");
             }
         }
         scanner.close();
