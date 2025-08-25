@@ -21,29 +21,26 @@ public class TaskList implements Serializable {
         return string.toString();
     }
 
-    public void add(Task task) {
+    public String add(Task task) {
         tasks.add(task);
-        System.out.println("Got it. I've added this task:");
-        System.out.println("  " + task);
-        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+        return "Got it. I've added this task:\n  " + task + "\nNow you have " + tasks.size() + " tasks in the list.";
     }
 
-    public void delete(int taskNumber) {
+    public String delete(int taskNumber) {
         if (taskNumber <= 0 || taskNumber > tasks.size()) {
             throw new LunaException("Task " + taskNumber + " doesn't exist.");
         }
         Task deletedTask = tasks.remove(taskNumber - 1);
 
-        System.out.println("Noted. I've removed this task:");
-        System.out.println("  " + deletedTask);
-        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+        return "Noted. I've removed this task:\n  " + deletedTask + "\nNow you have " + tasks.size()
+                + " tasks in the list.";
     }
 
-    public void markAsDone(int taskNumber) {
-        tasks.get(taskNumber - 1).markAsDone();
+    public String markAsDone(int taskNumber) {
+        return tasks.get(taskNumber - 1).markAsDone();
     }
 
-    public void unmarkAsDone(int taskNumber) {
-        tasks.get(taskNumber - 1).unmarkAsDone();
+    public String unmarkAsDone(int taskNumber) {
+        return tasks.get(taskNumber - 1).unmarkAsDone();
     }
 }

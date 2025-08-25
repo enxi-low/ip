@@ -26,17 +26,15 @@ public abstract class Task implements Serializable {
 
     public abstract String taskType();
 
-    public void markAsDone() {
+    public String markAsDone() {
         isDone = true;
 
-        System.out.println("Nice! I've marked this task as done:");
-        System.out.println("  " + this);
+        return "Nice! I've marked this task as done:\n  " + this;
     }
 
-    public void unmarkAsDone() {
+    public String unmarkAsDone() {
         isDone = false;
 
-        System.out.println("OK, I've marked this task as not done yet:");
-        System.out.println("  " + this);
+        return "OK, I've marked this task as not done yet:\n  " + this;
     }
 }
