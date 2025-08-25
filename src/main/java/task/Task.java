@@ -2,7 +2,9 @@ package task;
 
 import exception.LunaException;
 
-public abstract class Task {
+import java.io.Serializable;
+
+public abstract class Task implements Serializable {
     private final String name;
     private boolean isDone;
 
