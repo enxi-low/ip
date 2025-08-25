@@ -6,6 +6,8 @@ import task.TaskList;
 import task.ToDo;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Luna {
@@ -48,12 +50,12 @@ public class Luna {
                     fileHandler.save(list);
                 } else if (command.startsWith("deadline")) {
                     String[] nameAndDeadline = command.substring(9).split(" /by ");
-                    list.add(new Deadline(nameAndDeadline[0], nameAndDeadline[1]));
+                    list.add(new Deadline(nameAndDeadline[0], LocalDate.parse(nameAndDeadline[1])));
                     fileHandler.save(list);
                 } else if (command.startsWith("event")) {
                     String[] nameAndRest = command.substring(6).split(" /from ");
                     String[] fromAndTo = nameAndRest[1].split(" /to ");
-                    list.add(new Event(nameAndRest[0], fromAndTo[0], fromAndTo[1]));
+                    list.add(new Event(nameAndRest[0], LocalDate.parse(fromAndTo[0]), LocalDate.parse(fromAndTo[1])));
                     fileHandler.save(list);
                 } else {
                     System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
@@ -66,6 +68,8 @@ public class Luna {
                 System.out.println("OOPS!!! Missing arguments.");
             } catch (IOException e) {
                 System.out.println("OOPS!!! Saving failed.");
+            } catch (DateTimeParseException e) {
+                System.out.println("OOPS!!! Please provide a valid date in yyyy-mm-dd format.");
             }
             printSeparator();
         }

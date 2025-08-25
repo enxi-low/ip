@@ -1,15 +1,13 @@
 package task;
 
-import exception.LunaException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Deadline extends Task {
-    private final String deadline;
+    private final LocalDate deadline;
 
-    public Deadline(String name, String deadline) {
+    public Deadline(String name, LocalDate deadline) {
         super(name);
-        if (deadline.isEmpty()) {
-            throw new LunaException("The deadline of a deadline cannot be empty.");
-        }
         this.deadline = deadline;
     }
 
@@ -20,6 +18,7 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return String.format("[D]%s (by: %s)", super.toString(), deadline);
+        return String.format("[D]%s (by: %s)", super.toString(),
+                deadline.format(DateTimeFormatter.ofPattern("MMM d yyyy")));
     }
 }
