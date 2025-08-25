@@ -1,6 +1,4 @@
-package save;
-
-import task.TaskList;
+package storage;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,14 +8,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 
-public class FileHandler {
+public class Storage<T> {
     private final String pathname;
 
-    public FileHandler(String pathname) {
+    public Storage(String pathname) {
         this.pathname = pathname;
     }
 
-    public void save(TaskList contents) throws IOException {
+    public void save(T contents) throws IOException {
         createFile();
         FileOutputStream fileOutputStream = new FileOutputStream(pathname);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -26,17 +24,18 @@ public class FileHandler {
         objectOutputStream.close();
     }
 
-    public TaskList load() throws ClassNotFoundException, IOException {
+    @SuppressWarnings("unchecked")
+    public T load() throws ClassNotFoundException, IOException {
         createFile();
         FileInputStream fileInputStream = new FileInputStream(pathname);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        TaskList list;
+        T object;
         try {
-            list = (TaskList) objectInputStream.readObject();
+            object = (T) objectInputStream.readObject();
         } finally {
             objectInputStream.close();
         }
-        return list;
+        return object;
     }
 
     private void createFile() throws IOException {

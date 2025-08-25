@@ -1,5 +1,5 @@
 import exception.LunaException;
-import save.FileHandler;
+import storage.Storage;
 import task.Deadline;
 import task.Event;
 import task.TaskList;
@@ -12,10 +12,10 @@ import java.util.Scanner;
 
 public class Luna {
     public static void main(String[] args) {
-        FileHandler fileHandler = new FileHandler("./data/luna.txt");
+        Storage<TaskList> storage = new Storage<>("./data/luna.txt");
         TaskList list;
         try {
-            list = fileHandler.load();
+            list = storage.load();
         } catch (IOException | ClassNotFoundException e) {
             list = new TaskList();
         }
@@ -38,25 +38,25 @@ public class Luna {
                     System.out.println(list);
                 } else if (command.startsWith("mark")) {
                     list.markAsDone(Integer.parseInt(command.substring(5)));
-                    fileHandler.save(list);
+                    storage.save(list);
                 } else if (command.startsWith("unmark")) {
                     list.unmarkAsDone(Integer.parseInt(command.substring(7)));
-                    fileHandler.save(list);
+                    storage.save(list);
                 } else if (command.startsWith("delete")) {
                     list.delete(Integer.parseInt(command.substring(7)));
-                    fileHandler.save(list);
+                    storage.save(list);
                 } else if (command.startsWith("todo")) {
                     list.add(new ToDo(command.substring(5)));
-                    fileHandler.save(list);
+                    storage.save(list);
                 } else if (command.startsWith("deadline")) {
                     String[] nameAndDeadline = command.substring(9).split(" /by ");
                     list.add(new Deadline(nameAndDeadline[0], LocalDate.parse(nameAndDeadline[1])));
-                    fileHandler.save(list);
+                    storage.save(list);
                 } else if (command.startsWith("event")) {
                     String[] nameAndRest = command.substring(6).split(" /from ");
                     String[] fromAndTo = nameAndRest[1].split(" /to ");
                     list.add(new Event(nameAndRest[0], LocalDate.parse(fromAndTo[0]), LocalDate.parse(fromAndTo[1])));
-                    fileHandler.save(list);
+                    storage.save(list);
                 } else {
                     System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
                 }
