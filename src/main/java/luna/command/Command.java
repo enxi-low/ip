@@ -7,12 +7,21 @@ import luna.ui.Ui;
 
 import java.io.IOException;
 
+/**
+ * Represents executable commands that the user can give to Luna.
+ */
 public abstract class Command {
+    /**
+     * Executes the command.
+     */
     public abstract void execute(TaskList taskList, Ui ui, Storage<TaskList> storage);
 
+    /**
+     * Returns if the program should exit after executing the command.
+     */
     public abstract boolean isExit();
 
-    public void saveTaskList(TaskList taskList, Storage<TaskList> storage) {
+    protected void saveTaskList(TaskList taskList, Storage<TaskList> storage) {
         try {
             storage.save(taskList);
         } catch (IOException e) {

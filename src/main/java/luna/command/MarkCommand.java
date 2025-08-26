@@ -4,6 +4,9 @@ import luna.storage.Storage;
 import luna.task.TaskList;
 import luna.ui.Ui;
 
+/**
+ * Represents the {@code mark} command.
+ */
 public class MarkCommand extends Command {
     private final int taskNumber;
 

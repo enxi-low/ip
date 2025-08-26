@@ -3,6 +3,9 @@ package luna.task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents a {@code Task} that has a deadline.
+ */
 public class Deadline extends Task {
     private final LocalDate deadline;
 

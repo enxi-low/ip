@@ -7,6 +7,9 @@ import luna.ui.Ui;
 
 import java.time.LocalDate;
 
+/**
+ * Represents the {@code deadline} command.
+ */
 public class DeadlineCommand extends Command {
     private final String name;
     private final LocalDate deadline;
