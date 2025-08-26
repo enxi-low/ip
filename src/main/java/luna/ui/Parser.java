@@ -1,18 +1,19 @@
 package luna.ui;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+
 import luna.command.ByeCommand;
 import luna.command.Command;
 import luna.command.DeadlineCommand;
 import luna.command.DeleteCommand;
 import luna.command.EventCommand;
+import luna.command.FindCommand;
 import luna.command.ListCommand;
 import luna.command.MarkCommand;
 import luna.command.TodoCommand;
 import luna.command.UnmarkCommand;
 import luna.exception.LunaException;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 
 public class Parser {
     public static Command parse(String command) {
@@ -36,6 +37,8 @@ public class Parser {
                 String[] nameAndRest = command.substring(6).split(" /from ");
                 String[] fromAndTo = nameAndRest[1].split(" /to ");
                 return new EventCommand(nameAndRest[0], LocalDate.parse(fromAndTo[0]), LocalDate.parse(fromAndTo[1]));
+            } else if (command.startsWith("find ")) {
+                return new FindCommand(command.substring(5));
             } else {
                 throw new LunaException("I'm sorry, but I don't know what that means :-(");
             }

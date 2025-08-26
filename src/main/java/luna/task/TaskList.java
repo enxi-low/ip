@@ -43,4 +43,16 @@ public class TaskList implements Serializable {
     public String unmarkAsDone(int taskNumber) {
         return tasks.get(taskNumber - 1).unmarkAsDone();
     }
+
+    public String find(String search) {
+        StringBuilder string = new StringBuilder("Here are the matching tasks in your list:\n");
+        int count = 0;
+        for (Task task : tasks) {
+            if (task.contains(search)) {
+                count++;
+                string.append(count).append(". ").append(task).append("\n");
+            }
+        }
+        return string.substring(0, string.length() - 1);
+    }
 }
