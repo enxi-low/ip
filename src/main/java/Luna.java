@@ -9,16 +9,20 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Luna {
-    public static void main(String[] args) {
-        Ui ui = new Ui();
-        Storage<TaskList> storage = new Storage<>("./data/luna.txt");
-        TaskList list;
-        try {
-            list = storage.load();
-        } catch (IOException | ClassNotFoundException e) {
-            list = new TaskList();
-        }
+    private final Storage<TaskList> storage;
+    private TaskList taskList;
+    private final Ui ui = new Ui();
 
+    public Luna(String filePath) {
+        storage = new Storage<>(filePath);
+        try {
+            taskList = storage.load();
+        } catch (IOException | ClassNotFoundException e) {
+            taskList = new TaskList();
+        }
+    }
+
+    public void run() {
         ui.showWelcome();
 
         boolean isExit = false;
@@ -27,12 +31,16 @@ public class Luna {
             String userCommand = scanner.nextLine();
             try {
                 Command command = Parser.parse(userCommand);
-                command.execute(list, ui, storage);
+                command.execute(taskList, ui, storage);
                 isExit = command.isExit();
             } catch (LunaException e) {
                 ui.showError(e);
             }
         }
         scanner.close();
+    }
+
+    public static void main(String[] args) {
+        new Luna("./data/luna.txt").run();
     }
 }
