@@ -1,8 +1,8 @@
 package luna.task;
 
-import luna.exception.LunaException;
-
 import java.io.Serializable;
+
+import luna.exception.LunaException;
 
 public abstract class Task implements Serializable {
     private final String name;

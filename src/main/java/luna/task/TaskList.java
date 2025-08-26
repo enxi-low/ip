@@ -1,9 +1,9 @@
 package luna.task;
 
-import luna.exception.LunaException;
-
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import luna.exception.LunaException;
 
 public class TaskList implements Serializable {
     private final ArrayList<Task> tasks = new ArrayList<>();

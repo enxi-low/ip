@@ -1,10 +1,11 @@
 package luna.task;
 
-import luna.exception.LunaException;
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
+import luna.exception.LunaException;
 
 
 public class TaskTest {

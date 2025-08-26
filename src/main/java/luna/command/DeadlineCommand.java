@@ -1,11 +1,11 @@
 package luna.command;
 
+import java.time.LocalDate;
+
 import luna.storage.Storage;
 import luna.task.Deadline;
 import luna.task.TaskList;
 import luna.ui.Ui;
-
-import java.time.LocalDate;
 
 public class DeadlineCommand extends Command {
     private final String name;
