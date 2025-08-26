@@ -1,5 +1,8 @@
 package luna.ui;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+
 import luna.command.ByeCommand;
 import luna.command.Command;
 import luna.command.DeadlineCommand;
@@ -11,15 +14,13 @@ import luna.command.TodoCommand;
 import luna.command.UnmarkCommand;
 import luna.exception.LunaException;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-
 /**
  * Parses the user input.
  */
 public class Parser {
     /**
      * Returns the {@code Command} from the user input.
+     *
      * @param command User input
      */
     public static Command parse(String command) {

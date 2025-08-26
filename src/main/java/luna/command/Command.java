@@ -1,11 +1,12 @@
 package luna.command;
 
+import java.io.IOException;
+
 import luna.exception.LunaException;
 import luna.storage.Storage;
 import luna.task.TaskList;
 import luna.ui.Ui;
 
-import java.io.IOException;
 
 /**
  * Represents executable commands that the user can give to Luna.

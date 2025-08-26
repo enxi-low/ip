@@ -1,12 +1,13 @@
 package luna.ui;
 
+import java.io.IOException;
+import java.util.Scanner;
+
 import luna.command.Command;
 import luna.exception.LunaException;
 import luna.storage.Storage;
 import luna.task.TaskList;
 
-import java.io.IOException;
-import java.util.Scanner;
 
 /**
  * Represents the chatbot.

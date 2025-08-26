@@ -1,9 +1,9 @@
 package luna.task;
 
-import luna.exception.LunaException;
-
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import luna.exception.LunaException;
 
 /**
  * Represents a list of tasks.

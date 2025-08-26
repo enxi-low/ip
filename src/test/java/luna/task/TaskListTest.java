@@ -1,8 +1,9 @@
 package luna.task;
 
-import luna.exception.LunaException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import luna.exception.LunaException;
 
 public class TaskListTest {
     @Test

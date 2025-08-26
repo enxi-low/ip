@@ -1,8 +1,8 @@
 package luna.task;
 
-import luna.exception.LunaException;
-
 import java.io.Serializable;
+
+import luna.exception.LunaException;
 
 /**
  * Represents a task that has a name and a done status.

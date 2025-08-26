@@ -1,15 +1,20 @@
 package luna.command;
 
+import java.time.LocalDate;
+
 import luna.storage.Storage;
 import luna.task.Event;
 import luna.task.TaskList;
 import luna.ui.Ui;
 
+<<<<<<< HEAD
 import java.time.LocalDate;
 
 /**
  * Represents the {@code event} command.
  */
+=======
+>>>>>>> branch-A-CodingStandard
 public class EventCommand extends Command {
     private final String name;
     private final LocalDate start;
