@@ -7,14 +7,12 @@ import luna.task.Deadline;
 import luna.task.TaskList;
 import luna.ui.Ui;
 
-<<<<<<< HEAD
-import java.time.LocalDate;
-
 /**
  * Represents the {@code deadline} command.
  */
 =======
->>>>>>> branch-A-CodingStandard
+        >>>>>>>branch-A-CodingStandard
+
 public class DeadlineCommand extends Command {
     private final String name;
     private final LocalDate deadline;

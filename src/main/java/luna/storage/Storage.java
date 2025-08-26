@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 
 /**
  * Stores an object on the hard disk.
+ *
  * @param <T> Type of the object that is stored.
  */
 public class Storage<T> {

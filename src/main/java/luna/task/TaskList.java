@@ -37,6 +37,7 @@ public class TaskList implements Serializable {
 
     /**
      * Deletes a {@code Task} from the {@code TaskList}.
+     *
      * @param taskNumber Task number of the task to be deleted.
      */
     public String delete(int taskNumber) {
@@ -51,6 +52,7 @@ public class TaskList implements Serializable {
 
     /**
      * Marks a {@code Task} from the {@code TaskList} as done.
+     *
      * @param taskNumber Task number of the task to be marked as done.
      */
     public String markAsDone(int taskNumber) {
@@ -59,6 +61,7 @@ public class TaskList implements Serializable {
 
     /**
      * Unmarks a {@code Task} from the {@code TaskList} as done.
+     *
      * @param taskNumber Task number of the task to be unmarked as done.
      */
     public String unmarkAsDone(int taskNumber) {
