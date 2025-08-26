@@ -54,4 +54,8 @@ public abstract class Task implements Serializable {
 
         return "OK, I've marked this task as not done yet:\n  " + this;
     }
+
+    public boolean contains(String search) {
+        return name.contains(search);
+    }
 }
