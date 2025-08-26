@@ -1,0 +1,29 @@
+package command;
+
+import storage.Storage;
+import task.Deadline;
+import task.TaskList;
+import ui.Ui;
+
+import java.time.LocalDate;
+
+public class DeadlineCommand extends Command {
+    private final String name;
+    private final LocalDate deadline;
+
+    public DeadlineCommand(String name, LocalDate deadline) {
+        this.name = name;
+        this.deadline = deadline;
+    }
+
+    @Override
+    public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
+        ui.show(taskList.add(new Deadline(name, deadline)));
+        saveTaskList(taskList, storage);
+    }
+
+    @Override
+    public boolean isExit() {
+        return false;
+    }
+}
