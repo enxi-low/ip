@@ -5,6 +5,9 @@ import luna.task.TaskList;
 import luna.task.ToDo;
 import luna.ui.Ui;
 
+/**
+ * Represents the {@code todo} command.
+ */
 public class TodoCommand extends Command {
     private final String name;
 

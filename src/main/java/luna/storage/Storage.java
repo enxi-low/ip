@@ -7,7 +7,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-
+/**
+ * Stores an object on the hard disk.
+ * @param <T> Type of the object that is stored.
+ */
 public class Storage<T> {
     private final String pathname;
 
@@ -15,6 +18,9 @@ public class Storage<T> {
         this.pathname = pathname;
     }
 
+    /**
+     * Saves the object onto the hard disk.
+     */
     public void save(T contents) throws IOException {
         createFile();
         FileOutputStream fileOutputStream = new FileOutputStream(pathname);
@@ -24,6 +30,9 @@ public class Storage<T> {
         objectOutputStream.close();
     }
 
+    /**
+     * Returns the object loaded from the hard disk.
+     */
     @SuppressWarnings("unchecked")
     public T load() throws ClassNotFoundException, IOException {
         createFile();

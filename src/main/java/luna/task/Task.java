@@ -4,6 +4,9 @@ import luna.exception.LunaException;
 
 import java.io.Serializable;
 
+/**
+ * Represents a task that has a name and a done status.
+ */
 public abstract class Task implements Serializable {
     private final String name;
     private boolean isDone;
@@ -15,6 +18,9 @@ public abstract class Task implements Serializable {
         this.name = name;
     }
 
+    /**
+     * Returns the {@code String} representation of the {@code Task}.
+     */
     @Override
     public String toString() {
         if (isDone) {
@@ -24,14 +30,25 @@ public abstract class Task implements Serializable {
         }
     }
 
+    /**
+     * Returns the {@code String} representation of the {@code Task} type.
+     */
     public abstract String taskType();
 
+    /**
+     * Returns the {@code String} description of the action of marking the task as done.
+     * Marks the task as done.
+     */
     public String markAsDone() {
         isDone = true;
 
         return "Nice! I've marked this task as done:\n  " + this;
     }
 
+    /**
+     * Returns the {@code String} description of the action of unmarking the task as done.
+     * Unmarks the task as done.
+     */
     public String unmarkAsDone() {
         isDone = false;
 

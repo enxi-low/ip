@@ -8,6 +8,9 @@ import luna.task.TaskList;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Represents the chatbot.
+ */
 public class Luna {
     private final Storage<TaskList> storage;
     private TaskList taskList;
@@ -22,6 +25,9 @@ public class Luna {
         }
     }
 
+    /**
+     * Runs the program.
+     */
     public void run() {
         ui.showWelcome();
 

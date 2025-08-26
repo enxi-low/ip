@@ -14,7 +14,14 @@ import luna.exception.LunaException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Parses the user input.
+ */
 public class Parser {
+    /**
+     * Returns the {@code Command} from the user input.
+     * @param command User input
+     */
     public static Command parse(String command) {
         try {
             if (command.equals("bye")) {
