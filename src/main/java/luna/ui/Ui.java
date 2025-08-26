@@ -1,4 +1,4 @@
-package ui;
+package luna.ui;
 
 public class Ui {
     public void showWelcome() {

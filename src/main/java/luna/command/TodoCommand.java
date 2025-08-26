@@ -1,9 +1,9 @@
-package command;
+package luna.command;
 
-import storage.Storage;
-import task.TaskList;
-import task.ToDo;
-import ui.Ui;
+import luna.storage.Storage;
+import luna.task.TaskList;
+import luna.task.ToDo;
+import luna.ui.Ui;
 
 public class TodoCommand extends Command {
     private final String name;

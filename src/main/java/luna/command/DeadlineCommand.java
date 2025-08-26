@@ -1,9 +1,9 @@
-package command;
+package luna.command;
 
-import storage.Storage;
-import task.Deadline;
-import task.TaskList;
-import ui.Ui;
+import luna.storage.Storage;
+import luna.task.Deadline;
+import luna.task.TaskList;
+import luna.ui.Ui;
 
 import java.time.LocalDate;
 

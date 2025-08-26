@@ -1,8 +1,8 @@
-package command;
+package luna.command;
 
-import storage.Storage;
-import task.TaskList;
-import ui.Ui;
+import luna.storage.Storage;
+import luna.task.TaskList;
+import luna.ui.Ui;
 
 public class DeleteCommand extends Command {
     private final int taskNumber;

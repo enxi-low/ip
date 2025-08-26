@@ -1,4 +1,4 @@
-package storage;
+package luna.storage;
 
 import java.io.File;
 import java.io.FileInputStream;

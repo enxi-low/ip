@@ -1,4 +1,4 @@
-package task;
+package luna.task;
 
 public class ToDo extends Task {
     public ToDo(String name) {

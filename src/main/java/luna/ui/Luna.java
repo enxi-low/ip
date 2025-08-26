@@ -1,9 +1,9 @@
-import command.Command;
-import exception.LunaException;
-import storage.Storage;
-import task.TaskList;
-import ui.Parser;
-import ui.Ui;
+package luna.ui;
+
+import luna.command.Command;
+import luna.exception.LunaException;
+import luna.storage.Storage;
+import luna.task.TaskList;
 
 import java.io.IOException;
 import java.util.Scanner;
