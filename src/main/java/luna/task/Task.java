@@ -13,7 +13,7 @@ public abstract class Task implements Serializable {
 
     public Task(String name) throws LunaException {
         if (name.isEmpty()) {
-            throw new LunaException("The description of a " + taskType() + " cannot be empty");
+            throw new LunaException("The description of a " + getTaskType() + " cannot be empty");
         }
         this.name = name;
     }
@@ -33,7 +33,7 @@ public abstract class Task implements Serializable {
     /**
      * Returns the {@code String} representation of the {@code Task} type.
      */
-    public abstract String taskType();
+    public abstract String getTaskType();
 
     /**
      * Marks the task as done.
