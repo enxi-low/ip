@@ -10,9 +10,6 @@ import luna.ui.Ui;
 /**
  * Represents the {@code deadline} command.
  */
-=======
-        >>>>>>>branch-A-CodingStandard
-
 public class DeadlineCommand extends Command {
     private final String name;
     private final LocalDate deadline;

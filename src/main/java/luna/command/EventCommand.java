@@ -10,9 +10,6 @@ import luna.ui.Ui;
 /**
  * Represents the {@code event} command.
  */
-=======
-        >>>>>>>branch-A-CodingStandard
-
 public class EventCommand extends Command {
     private final String name;
     private final LocalDate start;
