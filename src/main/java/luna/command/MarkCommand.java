@@ -1,8 +1,8 @@
 package luna.command;
 
 import luna.storage.Storage;
+import luna.task.Task;
 import luna.task.TaskList;
-import luna.ui.Ui;
 
 /**
  * Represents the {@code mark} command.
@@ -15,9 +15,10 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
-        ui.showMarkAsDone(taskList.markAsDone(taskNumber));
+    public String execute(TaskList taskList, Storage<TaskList> storage) {
+        Task task = taskList.markAsDone(taskNumber);
         saveTaskList(taskList, storage);
+        return "Nice! I've marked this task as done:\n  " + task;
     }
 
     @Override

@@ -2,15 +2,14 @@ package luna.command;
 
 import luna.storage.Storage;
 import luna.task.TaskList;
-import luna.ui.Ui;
 
 /**
  * Represents the {@code bye} command.
  */
 public class ByeCommand extends Command {
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
-        ui.showFarewell();
+    public String execute(TaskList taskList, Storage<TaskList> storage) {
+        return "Bye. Hope to see you again soon!";
     }
 
     @Override

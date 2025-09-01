@@ -1,5 +1,6 @@
 package luna.ui;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -7,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import luna.command.Command;
+import luna.exception.LunaException;
 
 /**
  * Controller for the main GUI.
@@ -45,7 +48,17 @@ public class MainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
-        String response = luna.getResponse(input);
+        String response;
+        try {
+            Command command = Parser.parse(input);
+            response = luna.getResponse(command);
+            if (command.isExit()) {
+                Platform.exit();
+            }
+        } catch (LunaException e) {
+            response = "OOPS!!! " + e.getMessage();
+        }
+
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getDukeDialog(response, lunaImage)

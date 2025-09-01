@@ -1,8 +1,8 @@
 package luna.command;
 
 import luna.storage.Storage;
+import luna.task.Task;
 import luna.task.TaskList;
-import luna.ui.Ui;
 
 /**
  * Represents the {@code unmark} command.
@@ -15,9 +15,10 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
-        ui.showUnmarkAsDone(taskList.unmarkAsDone(taskNumber));
+    public String execute(TaskList taskList, Storage<TaskList> storage) {
+        Task task = taskList.unmarkAsDone(taskNumber);
         saveTaskList(taskList, storage);
+        return "OK, I've marked this task as not done yet:\n  " + task;
     }
 
     @Override
