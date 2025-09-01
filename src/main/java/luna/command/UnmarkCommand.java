@@ -16,7 +16,7 @@ public class UnmarkCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
-        ui.show(taskList.unmarkAsDone(taskNumber));
+        ui.showUnmarkAsDone(taskList.unmarkAsDone(taskNumber));
         saveTaskList(taskList, storage);
     }
 

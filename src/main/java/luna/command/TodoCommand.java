@@ -17,8 +17,10 @@ public class TodoCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
-        ui.show(taskList.add(new ToDo(name)));
+        ToDo newTask = new ToDo(name);
+        taskList.add(newTask);
         saveTaskList(taskList, storage);
+        ui.showAddNewTask(newTask, taskList);
     }
 
     @Override

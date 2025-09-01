@@ -21,8 +21,10 @@ public class DeadlineCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
-        ui.show(taskList.add(new Deadline(name, deadline)));
+        Deadline newTask = new Deadline(name, deadline);
+        taskList.add(newTask);
         saveTaskList(taskList, storage);
+        ui.showAddNewTask(newTask, taskList);
     }
 
     @Override

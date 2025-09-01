@@ -16,7 +16,7 @@ public class DeleteCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
-        ui.show(taskList.delete(taskNumber));
+        ui.showDeleteTask(taskList.delete(taskNumber), taskList);
         saveTaskList(taskList, storage);
     }
 

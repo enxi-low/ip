@@ -27,56 +27,58 @@ public class TaskList implements Serializable {
         return string.toString();
     }
 
+    public int getSize() {
+        return tasks.size();
+    }
+
     /**
      * Adds a {@code Task} to the {@code TaskList}.
      */
-    public String add(Task task) {
+    public void add(Task task) {
         tasks.add(task);
-        return "Got it. I've added this task:\n  " + task + "\nNow you have " + tasks.size() + " tasks in the list.";
     }
 
     /**
-     * Deletes a {@code Task} from the {@code TaskList}.
+     * Returns the {@code Task} deleted from the {@code TaskList}.
      *
      * @param taskNumber Task number of the task to be deleted.
      */
-    public String delete(int taskNumber) {
+    public Task delete(int taskNumber) {
         if (taskNumber <= 0 || taskNumber > tasks.size()) {
             throw new LunaException("Task " + taskNumber + " doesn't exist.");
         }
-        Task deletedTask = tasks.remove(taskNumber - 1);
-
-        return "Noted. I've removed this task:\n  " + deletedTask + "\nNow you have " + tasks.size()
-                + " tasks in the list.";
+        return tasks.remove(taskNumber - 1);
     }
 
     /**
-     * Marks a {@code Task} from the {@code TaskList} as done.
+     * Returns the {@code Task} that was marked as done.
      *
      * @param taskNumber Task number of the task to be marked as done.
      */
-    public String markAsDone(int taskNumber) {
-        return tasks.get(taskNumber - 1).markAsDone();
+    public Task markAsDone(int taskNumber) {
+        Task task = tasks.get(taskNumber - 1);
+        task.markAsDone();
+        return task;
     }
 
     /**
-     * Unmarks a {@code Task} from the {@code TaskList} as done.
+     * Returns the {@code Task} that was unmarked as done.
      *
      * @param taskNumber Task number of the task to be unmarked as done.
      */
-    public String unmarkAsDone(int taskNumber) {
-        return tasks.get(taskNumber - 1).unmarkAsDone();
+    public Task unmarkAsDone(int taskNumber) {
+        Task task = tasks.get(taskNumber - 1);
+        task.unmarkAsDone();
+        return task;
     }
 
-    public String find(String search) {
-        StringBuilder string = new StringBuilder("Here are the matching tasks in your list:\n");
-        int count = 0;
+    public TaskList find(String search) {
+        TaskList matchingTasks = new TaskList();
         for (Task task : tasks) {
             if (task.contains(search)) {
-                count++;
-                string.append(count).append(". ").append(task).append("\n");
+                matchingTasks.add(task);
             }
         }
-        return string.substring(0, string.length() - 1);
+        return matchingTasks;
     }
 }

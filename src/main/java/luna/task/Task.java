@@ -36,23 +36,17 @@ public abstract class Task implements Serializable {
     public abstract String taskType();
 
     /**
-     * Returns the {@code String} description of the action of marking the task as done.
      * Marks the task as done.
      */
-    public String markAsDone() {
+    public void markAsDone() {
         isDone = true;
-
-        return "Nice! I've marked this task as done:\n  " + this;
     }
 
     /**
-     * Returns the {@code String} description of the action of unmarking the task as done.
      * Unmarks the task as done.
      */
-    public String unmarkAsDone() {
+    public void unmarkAsDone() {
         isDone = false;
-
-        return "OK, I've marked this task as not done yet:\n  " + this;
     }
 
     public boolean contains(String search) {

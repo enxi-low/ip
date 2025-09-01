@@ -23,8 +23,10 @@ public class EventCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
-        ui.show(taskList.add(new Event(name, start, end)));
+        Event newTask = new Event(name, start, end);
+        taskList.add(newTask);
         saveTaskList(taskList, storage);
+        ui.showAddNewTask(newTask, taskList);
     }
 
     @Override

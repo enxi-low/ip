@@ -22,18 +22,16 @@ public class TaskListTest {
     @Test
     public void delete_validTaskNumber_success() {
         TaskList list = new TaskList();
-        list.add(new ToDo("1"));
-        Assertions.assertEquals(
-                "Noted. I've removed this task:\n  [T][ ] 1\nNow you have 0 tasks in the list.",
-                list.delete(1));
+        Task task1 = new ToDo("1");
+        Task task2 = new ToDo("2");
+        Task task3 = new ToDo("3");
 
-        list.add(new ToDo("2"));
-        list.add(new ToDo("3"));
-        Assertions.assertEquals(
-                "Noted. I've removed this task:\n  [T][ ] 2\nNow you have 1 tasks in the list.",
-                list.delete(1));
-        Assertions.assertEquals(
-                "Noted. I've removed this task:\n  [T][ ] 3\nNow you have 0 tasks in the list.",
-                list.delete(1));
+        list.add(task1);
+        Assertions.assertEquals(task1, list.delete(1));
+
+        list.add(task2);
+        list.add(task3);
+        Assertions.assertEquals(task2, list.delete(1));
+        Assertions.assertEquals(task3, list.delete(1));
     }
 }

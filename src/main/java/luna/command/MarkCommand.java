@@ -16,7 +16,7 @@ public class MarkCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
-        ui.show(taskList.markAsDone(taskNumber));
+        ui.showMarkAsDone(taskList.markAsDone(taskNumber));
         saveTaskList(taskList, storage);
     }
 

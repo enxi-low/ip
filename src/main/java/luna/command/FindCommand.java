@@ -13,7 +13,7 @@ public class FindCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
-        ui.show(taskList.find(search));
+        ui.showMatchingTasks(taskList.find(search));
     }
 
     @Override
