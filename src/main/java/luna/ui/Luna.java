@@ -1,10 +1,8 @@
 package luna.ui;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 import luna.command.Command;
-import luna.exception.LunaException;
 import luna.storage.Storage;
 import luna.task.TaskList;
 
@@ -14,7 +12,6 @@ import luna.task.TaskList;
 public class Luna {
     private final Storage<TaskList> storage;
     private TaskList taskList;
-    private final Ui ui = new Ui();
 
     public Luna(String filePath) {
         storage = new Storage<>(filePath);
@@ -26,34 +23,10 @@ public class Luna {
     }
 
     /**
-     * Runs the program.
+     * Returns a response for the user's chat message.
+     * Executes the command.
      */
-    public void run() {
-        ui.showWelcome();
-
-        boolean isExit = false;
-        Scanner scanner = new Scanner(System.in);
-        while (!isExit) {
-            String userCommand = scanner.nextLine();
-            try {
-                Command command = Parser.parse(userCommand);
-                command.execute(taskList, ui, storage);
-                isExit = command.isExit();
-            } catch (LunaException e) {
-                ui.showError(e);
-            }
-        }
-        scanner.close();
-    }
-
-    /**
-     * Generates a response for the user's chat message.
-     */
-    public String getResponse(String input) {
-        return "Luna heard: " + input;
-    }
-
-    public static void main(String[] args) {
-        new Luna("./data/luna.txt").run();
+    public String getResponse(Command command) {
+        return command.execute(taskList, storage);
     }
 }

@@ -5,7 +5,6 @@ import java.io.IOException;
 import luna.exception.LunaException;
 import luna.storage.Storage;
 import luna.task.TaskList;
-import luna.ui.Ui;
 
 
 /**
@@ -14,8 +13,9 @@ import luna.ui.Ui;
 public abstract class Command {
     /**
      * Executes the command.
+     * Returns Luna's response to the execution.
      */
-    public abstract void execute(TaskList taskList, Ui ui, Storage<TaskList> storage);
+    public abstract String execute(TaskList taskList, Storage<TaskList> storage);
 
     /**
      * Returns if the program should exit after executing the command.

@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import luna.storage.Storage;
 import luna.task.Deadline;
 import luna.task.TaskList;
-import luna.ui.Ui;
 
 /**
  * Represents the {@code deadline} command.
@@ -20,11 +19,12 @@ public class DeadlineCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
+    public String execute(TaskList taskList, Storage<TaskList> storage) {
         Deadline newTask = new Deadline(name, deadline);
         taskList.add(newTask);
         saveTaskList(taskList, storage);
-        ui.showAddNewTask(newTask, taskList);
+        return "Got it. I've added this task:\n  " + newTask + "\nNow you have " + taskList.getSize()
+                + " tasks in the list.";
     }
 
     @Override

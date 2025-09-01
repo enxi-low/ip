@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import luna.storage.Storage;
 import luna.task.Event;
 import luna.task.TaskList;
-import luna.ui.Ui;
 
 /**
  * Represents the {@code event} command.
@@ -22,11 +21,12 @@ public class EventCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage<TaskList> storage) {
+    public String execute(TaskList taskList, Storage<TaskList> storage) {
         Event newTask = new Event(name, start, end);
         taskList.add(newTask);
         saveTaskList(taskList, storage);
-        ui.showAddNewTask(newTask, taskList);
+        return "Got it. I've added this task:\n  " + newTask + "\nNow you have " + taskList.getSize()
+                + " tasks in the list.";
     }
 
     @Override
