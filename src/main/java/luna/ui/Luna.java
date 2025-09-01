@@ -8,7 +8,6 @@ import luna.exception.LunaException;
 import luna.storage.Storage;
 import luna.task.TaskList;
 
-
 /**
  * Represents the chatbot.
  */
@@ -45,6 +44,13 @@ public class Luna {
             }
         }
         scanner.close();
+    }
+
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        return "Luna heard: " + input;
     }
 
     public static void main(String[] args) {
