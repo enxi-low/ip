@@ -24,6 +24,10 @@ public class Storage<T> {
      */
     public void save(T contents) throws IOException {
         createFile();
+        saveToFile(contents);
+    }
+
+    private void saveToFile(T contents) throws IOException {
         FileOutputStream fileOutputStream = new FileOutputStream(pathname);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(contents);
@@ -34,9 +38,13 @@ public class Storage<T> {
     /**
      * Returns the object loaded from the hard disk.
      */
-    @SuppressWarnings("unchecked")
     public T load() throws ClassNotFoundException, IOException {
         createFile();
+        return loadFromFile();
+    }
+
+    @SuppressWarnings("unchecked")
+    private T loadFromFile() throws IOException, ClassNotFoundException {
         FileInputStream fileInputStream = new FileInputStream(pathname);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         T object;
