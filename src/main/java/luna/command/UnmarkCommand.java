@@ -7,7 +7,7 @@ import luna.task.TaskList;
 /**
  * Represents the {@code unmark} command.
  */
-public class UnmarkCommand extends Command {
+public class UnmarkCommand extends IntermediateCommand {
     private final int taskNumber;
 
     public UnmarkCommand(int taskNumber) {
@@ -19,10 +19,5 @@ public class UnmarkCommand extends Command {
         Task task = taskList.unmarkAsDone(taskNumber);
         saveTaskList(taskList, storage);
         return "OK, I've marked this task as not done yet:\n  " + task;
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 }

@@ -7,7 +7,7 @@ import luna.task.TaskList;
 /**
  * Represents the {@code delete} command.
  */
-public class DeleteCommand extends Command {
+public class DeleteCommand extends IntermediateCommand {
     private final int taskNumber;
 
     public DeleteCommand(int taskNumber) {
@@ -20,10 +20,5 @@ public class DeleteCommand extends Command {
         saveTaskList(taskList, storage);
         return "Noted. I've removed this task:\n  " + task + "\nNow you have " + taskList.getSize()
                 + " tasks in the list.";
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 }

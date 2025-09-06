@@ -6,14 +6,9 @@ import luna.task.TaskList;
 /**
  * Represents the {@code list} command.
  */
-public class ListCommand extends Command {
+public class ListCommand extends IntermediateCommand {
     @Override
     public String execute(TaskList taskList, Storage<TaskList> storage) {
         return taskList.toString();
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 }

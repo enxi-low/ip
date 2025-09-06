@@ -3,7 +3,7 @@ package luna.command;
 import luna.storage.Storage;
 import luna.task.TaskList;
 
-public class FindCommand extends Command {
+public class FindCommand extends IntermediateCommand {
     private final String search;
 
     public FindCommand(String search) {
@@ -13,10 +13,5 @@ public class FindCommand extends Command {
     @Override
     public String execute(TaskList taskList, Storage<TaskList> storage) {
         return "Here are the matching tasks in your list:\n" + taskList.find(search);
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 }

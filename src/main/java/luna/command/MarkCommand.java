@@ -7,7 +7,7 @@ import luna.task.TaskList;
 /**
  * Represents the {@code mark} command.
  */
-public class MarkCommand extends Command {
+public class MarkCommand extends IntermediateCommand {
     private final int taskNumber;
 
     public MarkCommand(int taskNumber) {
@@ -19,10 +19,5 @@ public class MarkCommand extends Command {
         Task task = taskList.markAsDone(taskNumber);
         saveTaskList(taskList, storage);
         return "Nice! I've marked this task as done:\n  " + task;
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 }
