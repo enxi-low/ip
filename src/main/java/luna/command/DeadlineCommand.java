@@ -9,7 +9,7 @@ import luna.task.TaskList;
 /**
  * Represents the {@code deadline} command.
  */
-public class DeadlineCommand extends Command {
+public class DeadlineCommand extends IntermediateCommand {
     private final String name;
     private final LocalDate deadline;
 
@@ -25,10 +25,5 @@ public class DeadlineCommand extends Command {
         saveTaskList(taskList, storage);
         return "Got it. I've added this task:\n  " + newTask + "\nNow you have " + taskList.getSize()
                 + " tasks in the list.";
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 }

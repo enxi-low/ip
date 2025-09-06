@@ -7,7 +7,7 @@ import luna.task.ToDo;
 /**
  * Represents the {@code todo} command.
  */
-public class TodoCommand extends Command {
+public class TodoCommand extends IntermediateCommand {
     private final String name;
 
     public TodoCommand(String name) {
@@ -21,10 +21,5 @@ public class TodoCommand extends Command {
         saveTaskList(taskList, storage);
         return "Got it. I've added this task:\n  " + newTask + "\nNow you have " + taskList.getSize()
                 + " tasks in the list.";
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 }

@@ -9,7 +9,7 @@ import luna.task.TaskList;
 /**
  * Represents the {@code event} command.
  */
-public class EventCommand extends Command {
+public class EventCommand extends IntermediateCommand {
     private final String name;
     private final LocalDate start;
     private final LocalDate end;
@@ -27,10 +27,5 @@ public class EventCommand extends Command {
         saveTaskList(taskList, storage);
         return "Got it. I've added this task:\n  " + newTask + "\nNow you have " + taskList.getSize()
                 + " tasks in the list.";
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 }
