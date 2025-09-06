@@ -53,6 +53,7 @@ public class Storage<T> {
         } finally {
             objectInputStream.close();
         }
+        assert object != null;
         return object;
     }
 

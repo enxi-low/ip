@@ -59,6 +59,9 @@ public class MainWindow extends AnchorPane {
             response = "OOPS!!! " + e.getMessage();
         }
 
+        assert response != null;
+        assert userImage != null;
+        assert lunaImage != null;
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getDukeDialog(response, lunaImage)

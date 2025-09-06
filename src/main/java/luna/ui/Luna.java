@@ -20,6 +20,7 @@ public class Luna {
         } catch (IOException | ClassNotFoundException e) {
             taskList = new TaskList();
         }
+        assert taskList != null;
     }
 
     /**
