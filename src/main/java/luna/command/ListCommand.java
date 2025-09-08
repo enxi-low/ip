@@ -9,6 +9,10 @@ import luna.task.TaskList;
 public class ListCommand extends IntermediateCommand {
     @Override
     public String execute(TaskList taskList, Storage<TaskList> storage) {
-        return taskList.toString();
+        if (taskList.getSize() == 0) {
+            return "You have no outstanding tasks :)";
+        } else {
+            return taskList.toString();
+        }
     }
 }
