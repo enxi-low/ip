@@ -1,5 +1,6 @@
 package luna.ui;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import luna.command.DeadlineCommand;
 import luna.command.DeleteCommand;
 import luna.command.EventCommand;
 import luna.command.FindCommand;
+import luna.command.FixedDurationTaskCommand;
 import luna.command.ListCommand;
 import luna.command.MarkCommand;
 import luna.command.TodoCommand;
@@ -48,6 +50,11 @@ public class Parser {
                         LocalDate.parse(parameters.get(2)));
             } else if (command.startsWith("find ")) {
                 return new FindCommand(getParameters(command, "find ").get(0));
+            } else if (command.startsWith("task ")) {
+                ArrayList<String> parameters = getParameters(command, "task ", " /duration ");
+                return new FixedDurationTaskCommand(
+                        parameters.get(0),
+                        Duration.ofHours(Long.parseLong(parameters.get(1))));
             } else {
                 throw new LunaException("I'm sorry, but I don't know what that means :-(");
             }
