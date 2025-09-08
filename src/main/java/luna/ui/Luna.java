@@ -23,6 +23,10 @@ public class Luna {
         assert taskList != null;
     }
 
+    public String getWelcomeMessage() {
+        return "Hello! I'm Luna. What can I do for you?";
+    }
+
     /**
      * Returns a response for the user's chat message.
      * Executes the command.

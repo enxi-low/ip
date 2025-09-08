@@ -39,6 +39,7 @@ public class MainWindow extends AnchorPane {
      */
     public void setLuna(Luna l) {
         luna = l;
+        dialogContainer.getChildren().add(DialogBox.getDukeDialog(luna.getWelcomeMessage(), lunaImage));
     }
 
     /**
